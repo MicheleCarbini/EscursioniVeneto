@@ -68,7 +68,12 @@ L'elaborazione dei dati verrà gestita dal server, mentre sono state create dell
 Solo le ultime due funzionalità dovranno essere gestite tramite postman
 
 <h1>ESEMPI DI UTILIZZO</h1>
-1 - GET di tutte le escursioni richiedendo tutti i dati.
-    La risposta sarà la seguente:
-    ![image](https://user-images.githubusercontent.com/101416939/172661811-41ab40d8-9bb2-4e7f-b0de-159454b3c73b.png)
+1 - GET di tutte le escursioni richiedendo tutti i dati, la risposta del server sarà la seguente:<br>
+    ![tuttiPercorsi](https://user-images.githubusercontent.com/101416939/172662802-deee61fd-2831-4605-bf51-d7170fce4ac0.png)
+
+    
+2 - GET delle escursioni facili cliccando il pulsante FACILE presente nella schermata precedente, la risposta del server sarà la seguente:<br>
+![percorsiFacili](https://user-images.githubusercontent.com/101416939/172663034-66a6b91e-3efd-4373-8ebe-5c37cc0ce01d.png)
+
+3 - GET di una specifica escursione
 
