@@ -43,10 +43,13 @@ per l'implementazione ho utilizzato il sito glitch.com aggiungendo le seguenti i
   - tuttiPercorsi.html 
   
 <h1>DATI SFRUTTATI</h1>
-per il progetto ho utilizzato un datset chiamato percorsi.json reperito sul sito DatiOpen.it al seguente indirizzo:  http://www.datiopen.it/en/opendata/Regione_Veneto_Escursioni_giornaliere 
+per il progetto ho utilizzato un datset chiamato percorsi.json reperito sul sito DatiOpen.it al seguente indirizzo: 
+
+http://www.datiopen.it/en/opendata/Regione_Veneto_Escursioni_giornaliere 
 
 <h1>API IMPLEMENTATA</h1>
 Tutte le richieste vengono fatte tramite protocollo HTTP, le API implementate sono le seguenti:
+
 - GET per visualizzazione di tutti i percorsi con URL:https://bronzed-angry-glasses.glitch.me/percorsi
 - GET per visualizzazione singolo percorso con URL:https://bronzed-angry-glasses.glitch.me/specPerc
 - GET per filto della difficoltà di un percorso con URL:https://bronzed-angry-glasses.glitch.me/diffPercorso/n
