@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Escursioni</title>
+    <style>
+      body {
+        background-color: #ffce30;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Tutte le escursioni</h1>
+    <p>Filtra in base a difficoltà(facile se minore di 15km intermedio se tra 15 e 30km e difficile più do 30km):</p>
+    <form action="https://bronzed-angry-glasses.glitch.me/views/percFacile">
+        <button type="submit">
+          FACILE
+        </button> 
+      </form>
+      <form action="https://bronzed-angry-glasses.glitch.me/views/percIntermedio">
+        <button type="submit">
+          INTERMEDIO
+        </button> 
+      </form>
+      <form action="https://bronzed-angry-glasses.glitch.me/views/percDifficile">
+        <button type="submit">
+          DIFFICILE
+        </button> 
+      </form>      
+    <div id="result"></div>
+
+    <script>
+      async function setup() {
+        var url = "/percorsi";
+        let headers = [
+          "Provincia",
+          "Denominazione estesa della tratta",
+          "Lunghezza",
+          "Longitudine",
+          "Latitudine",
+          "Tipo di percorso (Percorso principale, Deviazione, Navigazione)",
+          "Nome codificato della tratta",
+          "Partenza della tratta",
+          "Arrivo della tratta",
+          "Tappe intermedie della tratta",
+        ];
+        var response = await fetch(url, {
+          Method: "GET",
+          Headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        var result = await response.json();
+        if (result[0] == null) {                                      // se lista vuota darà errore
+          console.log(result);
+          document.getElementById("result").innerHTML =
+            "Non è presente nessun percorso!";
+        } else {
+          var div = document.getElementById("result");
+          div.innerHTML = "";
+          for (var j = 0; j < result.length; j++) {               // ciclo for per stampa di diverse escursioni
+            div.innerHTML +=
+              "<br>" + "---------------------------" + "<br>" + "<br>";
+            for (var i = 0; i < headers.length; i++) {           // ciclo for per campi di ogni escursione
+              console.log(result[j][headers[i]]);
+              div.innerHTML +=
+                "<b>" + headers[i] + "</b>: " + result[j][headers[i]] + "<br>";
+            }
+          }
+        }
+      }
+      window.onload = setup;
+    </script>
+  </body>
+</html>
