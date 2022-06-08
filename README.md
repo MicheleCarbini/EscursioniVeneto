@@ -59,10 +59,10 @@ Tutte le richieste vengono fatte tramite protocollo HTTP, le API implementate so
 - DELETE per eliminare escursioni con URL:https://bronzed-angry-glasses.glitch.me/rimuoviPercorso
 
 INPUT<br>
-Nel primo caso non ho valori in input, nel secondo caso in input avrò il nome codificato della tratta (nc) usata per la ricerca, nel terzo caso non ho niente come input, nella POST avrò come input tutti i campi richiesti per la creazione di una nuova escursione, nella PUT avrò come input il nome codificato della tratta (nc) per la ricerca dell'escursione da modificare e la nuova lunghezza (l) da sostituire a quella vecchia, nella DELETE avrò come input il nome codificato della tratta (nc) da rimuovere
+Nel primo caso non ho valori in input, nel secondo caso in input avrò il nome codificato della tratta (nc) usata per la ricerca, nel terzo caso non ho niente come input, nella POST avrò come input tutti i campi richiesti per la creazione di una nuova escursione, nella PUT avrò come input il nome codificato della tratta (nc) per la ricerca dell'escursione da modificare e la nuova lunghezza (l) da sostituire a quella vecchia, nella DELETE avrò come input il nome codificato della tratta (nc) da rimuovere, per tutti gli input il formato è x-www-form-urlencoded
 
 OUTPUT<br>
-Nelle GET l'output sarà una lista di parametri richiesti o in caso di errore un messaggio di testo mentre nella POST nella PUT e nella DELETE sarà un messaggio di azione andata a buon fine o no 
+Nelle GET l'output sarà una lista di parametri con formato .json richiesti o in caso di errore un messaggio di testo mentre nella POST nella PUT e nella DELETE sarà un messaggio di azione andata a buon fine o no 
 
 <h1>MESSA ONLINE SERVIZIO</h1>
 L'elaborazione dei dati verrà gestita dal server, mentre sono state create delle pagine html per la gestione più semplice dei dati.
