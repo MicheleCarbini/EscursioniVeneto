@@ -66,3 +66,9 @@ Nelle GET l'output sarà una lista di parametri richiesti o in caso di errore un
 <h1>MESSA ONLINE SERVIZIO</h1>
 L'elaborazione dei dati verrà gestita dal server, mentre sono state create delle pagine html per la gestione più semplice dei dati.
 Solo le ultime due funzionalità dovranno essere gestite tramite postman
+
+<h1>ESEMPI DI UTILIZZO</h1>
+1 - GET di tutte le escursioni richiedendo tutti i dati.
+    La risposta sarà la seguente:
+    ![image](https://user-images.githubusercontent.com/101416939/172661811-41ab40d8-9bb2-4e7f-b0de-159454b3c73b.png)
+
