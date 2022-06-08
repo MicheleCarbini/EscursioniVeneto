@@ -34,6 +34,7 @@ La getione consiste nella:
   - 
 <h1>ARCHITETTURA E SCELTE IMPLEMENTATIVE</h1>
 per l'implementazione ho utilizzato il sito glitch.com aggiungendo le seguenti interfacce grafiche:
+
   - aggiungiPercorso.html
   - cercaPercorso.html 
   - escursioniHome.html 
