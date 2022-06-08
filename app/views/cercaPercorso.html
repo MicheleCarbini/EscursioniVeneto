@@ -5,14 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Cerca Percorso</title>
-    <!-- <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon"> -->
     <link
       rel="stylesheet"
       href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
       integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
       crossorigin=""
     />
-    <!-- Make sure you put this AFTER Leaflet's CSS -->
     <script
       src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
       integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
@@ -29,6 +27,7 @@
     <h1>Cerca percorso</h1>
 
     <form method="GET">
+      // richiesta all'utente del nome codificato della tratta
       <div class="form-group">
         <label for="nc">Nome codificato della tratta:</label>
         <input class="form-control" id="nc" name="nc" />
@@ -36,15 +35,16 @@
       <button type="button" class="btn" id="btn">Cerca</button>
     </form>
     <div id="result"></div>
-    <div style="float:left; width:400px; height:400px;" id="mapid"></div>
-    <div style="clear:both"></div>
+    <div style="float: left; width: 400px; height: 400px" id="mapid"></div>
+    <div style="clear: both"></div>
 
     <script>
       btn = document.getElementById("btn");
-      const attribution ='&copy; <a href="htts://www.openstreetmap.org/copyright"> OpenStreetMap </a>contributors';
-      const tUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-      const tiles = L.tileLayer(tUrl, {attribution})
-      var map = L.map('mapid');
+      const attribution =
+        '&copy; <a href="htts://www.openstreetmap.org/copyright"> OpenStreetMap </a>contributors';
+      const tUrl = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
+      const tiles = L.tileLayer(tUrl, { attribution });
+      var map = L.map("mapid");
       tiles.addTo(map);
       const latVeneto = 45.5582;
       const longVeneto = 11.5419;
@@ -64,32 +64,47 @@
           "Arrivo della tratta",
           "Tappe intermedie della tratta",
         ];
-        var response = await fetch(url, {          
+        var response = await fetch(url, {
           Method: "GET",
           Headers: {
             "Content-Type": "application/json",
           },
         });
+        // formatto lista risultante
         var result = await response.json();
         console.log(result);
-        if (result[headers[0]] == null) {                           // se lista vuota darà errore
+        if (result[headers[0]] == null) {
+          // se lista vuota darà errore
           console.log(result);
           document.getElementById("result").innerHTML =
             "Impossibile trovare percorso cambia nome codificato!";
         } else {
           var div = document.getElementById("result");
           div.innerHTML = "";
-          for (var i = 0; i < headers.length; i++) {               // ciclo per la stampa del risultato
+          for (var i = 0; i < headers.length; i++) {
+            // ciclo per la stampa del risultato
             console.log(result[headers[i]]);
             div.innerHTML +=
               "<b>" + headers[i] + "</b>: " + result[headers[i]] + "<br>";
           }
-          div.innerHTML += "<br>" + "---------------------------------------------------------------------------" + "<br>" + "<br>";
+          div.innerHTML +=
+            "<br>" +
+            "---------------------------------------------------------------------------" +
+            "<br>" +
+            "<br>";
         }
-        var longitudine = parseFloat(result[['Longitudine']]);
-        var latitudine = parseFloat(result[['Latitudine']]);
-        if (!isNaN(longitudine) && !isNaN(latitudine)) {                // converto cordinate                   
-          var descrizione = "nc: " + result[['Nome codificato della tratta']] + "<br>" + "nome: " + result[['Denominazione estesa della tratta']];
+
+        // creazione del marker della mappa
+        var longitudine = parseFloat(result[["Longitudine"]]);
+        var latitudine = parseFloat(result[["Latitudine"]]);
+        if (!isNaN(longitudine) && !isNaN(latitudine)) {
+          // converto cordinate
+          var descrizione =
+            "nc: " +
+            result[["Nome codificato della tratta"]] +
+            "<br>" +
+            "nome: " +
+            result[["Denominazione estesa della tratta"]];
           var markerStruttura = new L.LatLng(latitudine, longitudine);
           var marker = new L.Marker(markerStruttura);
           map.addLayer(marker);

@@ -16,17 +16,17 @@ let parser = JSON.parse(dataReader); // contiene il parsing del contenuto del mi
 app.post("/aggiungiPercorso", (req, res) => {
   // aggiungo un percorso al file
   const percorso = req.body;
-    console.log(percorso); // stampa della richiesta inviata
-    parser.push(percorso); // aggiorna la lista dei percorsi
-    data.writeFileSync("percorso.json", JSON.stringify(parser)); // salvo il json in formaro stringa nel database
-    console.log(parser.length); // stampa della lunghezza della lista
-    res.status(200).type("text/plain").send("Percorso salvato"); // messaggio allo user che il percorso e stato aggiornato
-  });
+  console.log(percorso); // stampa della richiesta inviata
+  parser.push(percorso); // aggiorna la lista dei percorsi
+  data.writeFileSync("percorso.json", JSON.stringify(parser)); // salvo il json in formaro stringa nel database
+  console.log(parser.length); // stampa della lunghezza della lista
+  res.status(200).type("text/plain").send("Percorso salvato"); // messaggio allo user che il percorso e stato aggiornato
+});
 
 app.delete("/rimuoviPercorso", (req, res) => {
   // rimuovo percorso da file
   const nc = req.body.nc;
-  var l = parser.length;  // lunghezza del file contenente i percorsi
+  var l = parser.length; // lunghezza del file contenente i percorsi
   if (parser.length == 0) {
     res.status(404).type("text/plain").send("File dei percorsi vuoto"); // messaggio allo user che indica che il file dei percorsi è vuoto
   } else {
@@ -59,7 +59,7 @@ app.put("/modificaPercorso", (req, res) => {
       // scorro la lista di percorsi
       if (parser[i]["Nome codificato della tratta"] == nc) {
         // ricerca percorso corretto
-        parser[i]["Lunghezza"] = l;
+        parser[i]["Lunghezza"] = l; // modifico contenuto lista
         p++;
       }
     }
@@ -86,7 +86,7 @@ app.get("/percorsi", (req, res) => {
 });
 
 app.get("/specPerc", (req, res) => {
-  // stampo un percorso cercandolo
+  // ricerca di un'escursione specifica
   const nc = req.query.nc; // costante che deve inserire l'utente
   var p = null;
   if (parser.length == 0) {
@@ -100,7 +100,7 @@ app.get("/specPerc", (req, res) => {
       }
     }
     if (p != null) {
-      res.status(200).type("application/json").json(p);// restuituisce informazioni percorso specifico
+      res.status(200).type("application/json").json(p); // restuituisce informazioni percorso specifico
     } else {
       res.status(404).type("application/json").json({}); // restituisce errore se nc non è presente nel file
     }
@@ -122,9 +122,9 @@ app.get("/diffPercorso/:n", (req, res) => {
     }
     if (p.length != 0) {
       // controllo se la lista dei percorsi è vuota
-      res.status(200).type("application/json").json(p);    // restituisco il contenuto della lista
+      res.status(200).type("application/json").json(p); // restituisco il contenuto della lista
     } else {
-      res.status(404).type("application/json").json({});   // restituisco errore
+      res.status(404).type("application/json").json({}); // restituisco errore
     }
   } else if (n == 2) {
     // percorso intermedio
@@ -154,7 +154,7 @@ app.get("/diffPercorso/:n", (req, res) => {
       // controllo se la lista dei percorsi è vuota
       res.status(200).type("application/json").json(p); // restituisco il contenuto della lista
     } else {
-      res.status(404).type("application/json").json({});  // restituisco errore
+      res.status(404).type("application/json").json({}); // restituisco errore
     }
   } else {
     // indirizzo errato restitusce errore

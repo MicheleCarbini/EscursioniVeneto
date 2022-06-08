@@ -14,22 +14,19 @@
 
   <body>
     <h1>Tutte le escursioni</h1>
-    <p>Filtra in base a difficoltà(facile se minore di 15km intermedio se tra 15 e 30km e difficile più do 30km):</p>
+    <p>
+      Filtra in base a difficoltà(facile se minore di 15km intermedio se tra 15
+      e 30km e difficile più do 30km):
+    </p>
     <form action="https://bronzed-angry-glasses.glitch.me/views/percFacile">
-        <button type="submit">
-          FACILE
-        </button> 
-      </form>
-      <form action="https://bronzed-angry-glasses.glitch.me/views/percIntermedio">
-        <button type="submit">
-          INTERMEDIO
-        </button> 
-      </form>
-      <form action="https://bronzed-angry-glasses.glitch.me/views/percDifficile">
-        <button type="submit">
-          DIFFICILE
-        </button> 
-      </form>      
+      <button type="submit">FACILE</button>
+    </form>
+    <form action="https://bronzed-angry-glasses.glitch.me/views/percIntermedio">
+      <button type="submit">INTERMEDIO</button>
+    </form>
+    <form action="https://bronzed-angry-glasses.glitch.me/views/percDifficile">
+      <button type="submit">DIFFICILE</button>
+    </form>
     <div id="result"></div>
 
     <script>
@@ -53,18 +50,22 @@
             "Content-Type": "application/json",
           },
         });
+        // formatto lista risultante
         var result = await response.json();
-        if (result[0] == null) {                                      // se lista vuota darà errore
+        if (result[0] == null) {
+          // se lista vuota darà errore
           console.log(result);
           document.getElementById("result").innerHTML =
             "Non è presente nessun percorso!";
         } else {
           var div = document.getElementById("result");
           div.innerHTML = "";
-          for (var j = 0; j < result.length; j++) {               // ciclo for per stampa di diverse escursioni
+          for (var j = 0; j < result.length; j++) {
+            // ciclo for per stampa di diverse escursioni
             div.innerHTML +=
               "<br>" + "---------------------------" + "<br>" + "<br>";
-            for (var i = 0; i < headers.length; i++) {           // ciclo for per campi di ogni escursione
+            for (var i = 0; i < headers.length; i++) {
+              // ciclo for per campi di ogni escursione
               console.log(result[j][headers[i]]);
               div.innerHTML +=
                 "<b>" + headers[i] + "</b>: " + result[j][headers[i]] + "<br>";
