@@ -31,4 +31,34 @@ La getione consiste nella:
   - modifica della lunghezza delle escursioni in caso di errori ricercandole per nome codificato delle tratta
   - visualizzazione di tutte le escursioni potendoli filtrare per livello di difficoltà (facile se lunghezza minore di 15km intermedio se compresa tra 15 e 30km e difficile se maddiore di 30km)
   - ricerca di un escursione basandosi sul nome codificato della tratta visualizzando una mappa che indica il punto di arrivo dell'escursione scelta 
+  - 
+<h1>ARCHITETTURA E SCELTE IMPLEMENTATIVE</h1>
+per l'implementazione ho utilizzato il sito glitch.com aggiungendo le seguenti interfacce grafiche:
+  - aggiungiPercorso.html
+  - cercaPercorso.html 
+  - escursioniHome.html 
+  - percDifficile.html 
+  - percFacile.html 
+  - percIntermedio.html 
+  - tuttiPercorsi.html 
+  
+<h1>DATI SFRUTTATI</h1>
+per il progetto ho utilizzato un datset chiamato percorsi.json reperito sul sito DatiOpen.it al seguente indirizzo:  http://www.datiopen.it/en/opendata/Regione_Veneto_Escursioni_giornaliere 
 
+<h1>API IMPLEMENTATA</h1>
+Tutte le richieste vengono fatte tramite protocollo HTTP, le API implementate sono le seguenti:
+- GET per visualizzazione di tutti i percorsi con URL:https://bronzed-angry-glasses.glitch.me/percorsi
+- GET per visualizzazione singolo percorso con URL:https://bronzed-angry-glasses.glitch.me/specPerc
+- GET per filto della difficoltà di un percorso con URL:https://bronzed-angry-glasses.glitch.me/diffPercorso/n
+- POST per aggiungere escursioni con URL:https://bronzed-angry-glasses.glitch.me/aggiungiPercorso
+- PUT per modificare lunghezza escursioni con URL:https://bronzed-angry-glasses.glitch.me/modificaPercorso
+- DELETE per eliminare escursioni con URL:https://bronzed-angry-glasses.glitch.me/rimuoviPercorso
+
+INPUT
+
+OUTPUT
+Nelle GET l'output sarà una lista di parametri richiesti o in caso di errore un messaggio di testo mentre nella POST nella PUT e nella DELETE sarà un messaggio di azione andata a buon fine o no 
+
+<h1>MESSA ONLINE SERVIZIO</h1>
+L'elaborazione dei dati verrà gestita dal server, mentre sono state create delle pagine html per la gestione più semplice dei dati.
+Solo le ultime due funzionalità dovranno essere gestite tramite postman
