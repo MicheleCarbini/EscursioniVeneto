@@ -70,8 +70,7 @@ Solo le ultime due funzionalità dovranno essere gestite tramite postman.
 
 <h1>ESEMPI DI UTILIZZO</h1>
 1 - GET di tutte le escursioni richiedendo tutti i dati, la risposta del server sarà la seguente:<br>
-![tuttiPercorsi](https://user-images.githubusercontent.com/101416939/172669769-e925bcb8-7071-47c3-8e0a-8890e5f20de9.png)
-
+![tuttiPercorsi](https://user-images.githubusercontent.com/101416939/172700270-99316a65-67b1-477e-8b30-54edbdb36aec.png)
 
     
 2 - GET delle escursioni facili cliccando il pulsante FACILE presente nella schermata precedente, la risposta del server sarà la seguente:<br>
